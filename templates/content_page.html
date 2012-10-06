@@ -1,0 +1,27 @@
+<html>
+<body>
+<h3><a href='/'>返回主页</a></h3>
+<h4>blog文章内容:</h4>
+<hr />
+   标题:{{blog.title}}<br/>
+   内容: {{blog.content}}<br/>
+   发表时间: {{blog.ptime}}<br/>
+   <hr />
+   {% if blog.reply.all %}
+        {% for r in blog.reply.all %}
+            回复:{{r.reply}}
+            回复人:{{r.author}}
+            <hr/>
+        {% endfor %}
+   {% else %}
+        暂无任何评论
+            <hr/>
+   {% endif %}
+<h4>发表评论:</h4>
+{% if user.username %}
+    <a href='/reply/{{blog.id}}'>发布评论</a>
+{% else %}
+    <a href='/login/'>点此链接登录后再评论</a>
+{% endif %}
+</body>
+</html>

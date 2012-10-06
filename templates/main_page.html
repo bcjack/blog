@@ -1,0 +1,27 @@
+<html>
+<h4>袖珍blog</h4>
+<hr/>
+{% if user.username %}
+    {% ifequal user.username 'bcj' %}
+<a href='/logout/'>注销{{user.username}}|</a> <a href='/add_style/'>添加分类|</a>
+<a href='/public/'>发布新blog</a>
+    {% else %}
+<a href='/logout/'>注销{{user.username}}</a>
+    {% endifequal%}        
+{% else %}
+<a href='/login/'>登录|</a> <a href='/register/'>注册</a>
+{% endif %}
+<hr/>
+<h5>blog分类</h5>
+{% for i in styles %}
+	<a href='/style/{{i.id}}'>{{i.style}}</a><br/>
+{% endfor %}
+<hr/>
+<h5>文章列表</h5>
+{% for j in blogs %}
+    第{{ forloop.counter }}篇:
+<a href='/content/{{j.id}}'>{{j.title}}</a><br/>
+	<div><a href='/content/{{j.id}}'>{{j.content|slice:':5'}}...</a><br/></div>
+{% endfor %}
+<hr/>
+</html>

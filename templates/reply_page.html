@@ -1,0 +1,16 @@
+<html>
+	<h4>回复页</h4>
+	<form action='.' method='POST'>
+        {% csrf_token %}
+        {{form.as_ul}}
+       <!-- {% for field in form %}
+            {% ifequal field.name 'author' %}
+            {% else %} 
+                <div>{{ field.errors }} {{ field.label_tag }}: {{field}}</div>
+            {% endifequal %}
+        {% endfor %} 
+    <input type='hidden' name='author' value='{{user.id}}'/> -->
+    <input type='submit' value='发帖'/>
+	</form>
+
+</html>
